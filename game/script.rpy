@@ -3,6 +3,24 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
+### Typography Pausemaker
+init python:
+    def typography(what):
+
+        replacements = [
+            ("? ", "? {w=.15}"),
+            ("! ", "! {w=.15}"),
+            (",", ", {w=.1}"),
+            ( ". . .", ". . . {w=.15}"),
+            (". ", ". {w=.15}"),
+        ]
+
+        for item in replacements:
+            what = what.replace(item[0],item[1])
+        
+        return what
+    
+    config.say_menu_text_filter = typography
 
 init python:
 ##  Basic Male Voice 1
@@ -51,6 +69,7 @@ define c = Character("Cassie", callback=girl_beep, color= "#a63eb4")
 define m = Character("Marco", callback=guy_beep, color="#b60e0e")
 
 
+
 # The game starts here.
 
 label start:
@@ -59,27 +78,23 @@ label start:
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
 
-    scene bg room
+    scene black
 
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images
     # directory.
 
-    show eileen happy
-
     # These display lines of dialogue.
 
-    j "You've created a new Ren'Py game."
+    j "My name is Jake. {w=0.5} That's my first name, obviously."
+    j "I can't tell you my last name. It would be too dangerous. The Controllers are everywhere. Everywhere."
+    j "And if they knew my full name, they could find me and my friends, and then..."
+    j "well, let's just say I don't want them to find me. What they do to people who resist them is too horrible to think about."
+    j "I won't even tell you where I live. You'll just have to trust me that it is a real place, a real town. It may even be {i}your{/i} town."
 
-    c "Once you add a story, pictures, and music, you can release it to the world!"
+    m "Nice going, Jake. We're out of quarters."
 
-    m "Just seeing how all the voices sound"
-
-    r "I hope this turns out ok!"
-
-    t "yeah woop woop woop woop "
-
-    j "lalalalalalal"
+    
 
     # This ends the game.
 
